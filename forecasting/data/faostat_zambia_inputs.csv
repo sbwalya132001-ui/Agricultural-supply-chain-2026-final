@@ -1,0 +1,193 @@
+faostat_domain,item_code,item,element,year,value,unit,flag
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1961,5280.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1962,4500.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1963,4600.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1964,6000.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1965,6000.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1966,6000.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1967,6500.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1968,12000.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1969,9126.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1970,19676.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1971,32795.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1972,25000.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1973,24000.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1974,35900.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1975,33700.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1976,39800.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1977,46200.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1978,31000.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1979,38172.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1980,53000.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1981,57600.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1982,54084.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1983,43300.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1984,37776.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1985,53351.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1986,53814.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1987,61817.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1988,56080.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1989,51800.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1990,37900.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1991,40091.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1992,57300.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1993,57900.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1994,38000.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1995,34000.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1996,27500.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1997,32600.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1998,13200.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,1999,10621.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2000,8000.000000,t,A
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2001,13000.000000,t,X
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2002,40335.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2003,42816.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2004,60177.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2005,51637.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2006,49225.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2007,55754.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2008,53215.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2009,64145.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2010,77617.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2011,116486.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2012,99337.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2013,140743.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2014,137980.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2015,165494.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2016,188107.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2017,210689.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2018,147994.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2019,167640.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2020,191734.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2021,178634.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2022,171912.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2023,232086.000000,t,I
+RFN,3102,Nutrient nitrogen N (total),Agricultural Use,2024,206414.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1961,3520.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1962,2550.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1963,2550.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1964,2550.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1965,3000.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1966,4000.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1967,5800.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1968,5200.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1969,4480.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1970,10424.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1971,12912.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1972,11863.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1973,11551.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1974,14700.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1975,14400.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1976,14100.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1977,15600.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1978,14000.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1979,14643.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1980,19500.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1981,20900.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1982,22100.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1983,17200.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1984,13980.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1985,18700.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1986,16492.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1987,23568.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1988,22660.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1989,19400.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1990,15900.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1991,15400.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1992,18200.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1993,19200.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1994,13000.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1995,13000.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1996,13900.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1997,14100.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1998,13500.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,1999,13391.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2000,13391.000000,t,A
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2001,11700.000000,t,X
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2002,13470.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2003,14559.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2004,11414.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2005,4790.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2006,8553.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2007,11587.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2008,8889.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2009,6226.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2010,8425.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2011,26815.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2012,25468.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2013,30201.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2014,39213.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2015,39294.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2016,38318.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2017,37342.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2018,36831.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2019,49348.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2020,57817.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2021,34031.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2022,41577.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2023,45946.000000,t,I
+RFN,3103,Nutrient phosphate P2O5 (total),Agricultural Use,2024,62195.000000,t,I
+QCL,56,Maize (corn),Area harvested,1961,750000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1962,750000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1963,770000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1964,790000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1965,800000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1966,820000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1967,830000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1968,850000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1969,870000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1970,900000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1971,1007328.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1972,1000000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1973,980000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1974,1116000.000000,ha,X
+QCL,56,Maize (corn),Area harvested,1975,1020000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1976,1100000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1977,950000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1978,810000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1979,520000.000000,ha,E
+QCL,56,Maize (corn),Area harvested,1980,555410.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1981,493783.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1982,454500.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1983,546700.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1984,506500.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1985,581846.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1986,588490.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1987,609529.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1988,723087.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1989,1020574.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1990,763277.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1991,639390.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1992,661305.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1993,633326.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1994,679355.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1995,520165.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1996,675565.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1997,649039.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1998,510372.000000,ha,A
+QCL,56,Maize (corn),Area harvested,1999,597454.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2000,586907.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2001,582000.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2002,362787.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2003,671000.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2004,631000.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2005,465832.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2006,618959.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2007,585291.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2008,539877.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2009,911942.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2010,1080556.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2011,1101785.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2012,1074658.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2013,997880.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2014,1205202.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2015,863818.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2016,1157754.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2017,1433944.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2018,1086006.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2019,841693.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2020,1333519.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2021,1410102.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2022,1115489.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2023,1418369.000000,ha,A
+QCL,56,Maize (corn),Area harvested,2024,684402.000000,ha,A

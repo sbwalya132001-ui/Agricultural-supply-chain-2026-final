@@ -1,0 +1,89 @@
+{% load static %}
+{% comment %}
+Interactive Zambia seasonal rainfall map. Context: seasonal_map (from
+weather.seasonal_map.seasonal_map_data), selected_district, can_refresh_national,
+and an optional initial_map_layer ("seas5" or "zmd:<period>").
+{% endcomment %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+    .seasonal-map { height: 520px; background: #dff4ff; }
+    .field-gradient { height: 12px; border-radius: 3px; border: 1px solid rgba(0, 0, 0, .15); max-width: 420px; }
+    .field-ticks { display: flex; justify-content: space-between; max-width: 420px; }
+    .seas5-chart-wrap { position: relative; height: 260px; }
+    .map-legend .swatch {
+        display: inline-block; width: 14px; height: 14px; margin-right: 6px;
+        border-radius: 3px; vertical-align: -2px; border: 1px solid rgba(0, 0, 0, .15);
+    }
+    .map-legend .swatch.no-data { background: #fff; border: 1px dashed #8a8984; }
+    .zmd-chip { border: 1px solid #dee2e6; border-radius: 8px; padding: 6px 10px; min-width: 7.5rem; }
+    .zmd-chip .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; border: 1px solid rgba(0, 0, 0, .15); }
+</style>
+<section class="{{ map_section_class|default:'mt-5' }}" id="seasonal-map">
+    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3">
+        <div>
+            <h2 class="h4 mb-1">Zambia seasonal rainfall outlook, {{ seasonal_map.season }}</h2>
+            <p class="small text-muted mb-0">Choose a layer, hover over a district for its outlook and click it to plot the SEAS5 monthly forecast.</p>
+        </div>
+        <div class="d-flex flex-wrap align-items-end gap-2">
+            <div>
+                <label class="form-label mb-1 small" for="map-layer">Map layer</label>
+                <select class="form-select form-select-sm" id="map-layer">
+                    <option value="seas5" {% if initial_map_layer == 'seas5' %}selected{% endif %}>ECMWF SEAS5 · Oct–Mar total</option>
+                    {% for period in seasonal_map.periods %}
+                    {% with layer_value="zmd:"|add:period %}
+                    <option value="{{ layer_value }}" {% if initial_map_layer == layer_value %}selected{% endif %}>ZMD outlook · {{ period }}</option>
+                    {% endwith %}
+                    {% endfor %}
+                </select>
+            </div>
+            {% if can_refresh_national %}
+            <form method="post" action="{% url 'weather_dashboard' %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="refresh_seasonal_national">
+                <button type="submit" class="btn btn-sm btn-outline-success">Refresh SEAS5 for all districts</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-lg-7">
+            <div id="zambia-map" class="seasonal-map rounded-3 border" role="region"
+                 aria-label="Map of Zambia districts coloured by seasonal rainfall outlook"
+                 data-geojson-url="{% static 'geo/zambia_districts.geojson' %}"
+                 data-provinces-url="{% static 'geo/zambia_provinces.geojson' %}"
+                 data-country-url="{% static 'geo/zambia_country.geojson' %}"></div>
+            <ul class="map-legend list-unstyled d-flex flex-wrap gap-3 small mt-2 mb-0" id="map-legend"></ul>
+            <p class="small text-muted mt-1 mb-0" id="map-layer-note"></p>
+        </div>
+        <div class="col-lg-5">
+            <article class="card h-100 border-0 shadow-sm rounded-4">
+                <div class="card-body p-4">
+                    <p class="text-muted small mb-1" id="district-province">Select a district on the map</p>
+                    <h3 class="h5 mb-1" id="district-name">—</h3>
+                    <p class="small mb-3" id="district-seas5-summary"></p>
+                    <div class="seas5-chart-wrap">
+                        <canvas id="seas5-chart" aria-label="SEAS5 monthly rainfall forecast compared with the model normal" role="img"></canvas>
+                    </div>
+                    <p class="small text-muted mt-2 mb-3" id="seas5-chart-empty"></p>
+                    <h4 class="h6 mb-2">ZMD outlook by period</h4>
+                    <div class="d-flex flex-wrap gap-2" id="district-zmd"></div>
+                </div>
+            </article>
+        </div>
+    </div>
+    <details class="mt-3">
+        <summary class="small">Table view of the selected district's SEAS5 forecast</summary>
+        <div class="table-responsive mt-2">
+            <table class="table table-sm small">
+                <thead><tr><th>Month</th><th>SEAS5 forecast</th><th>Model normal</th><th>Anomaly</th></tr></thead>
+                <tbody id="seas5-table"></tbody>
+            </table>
+        </div>
+    </details>
+</section>
+{{ seasonal_map|json_script:"seasonal-map-data" }}
+{{ selected_district|default:""|json_script:"selected-district" }}
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+{# Bump ?v= when seasonal_map.js changes so browsers drop their cached copy. #}
+<script defer src="{% static 'js/seasonal_map.js' %}?v=2"></script>

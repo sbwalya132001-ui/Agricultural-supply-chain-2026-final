@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Farmers - FISP System{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Registered Farmers</h2>
+    <a href="{% url 'farmer_create' %}" class="btn btn-success">+ Add Farmer</a>
+</div>
+
+{% if farmers %}
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>District</th>
+            <th>Ward</th>
+            <th>Primary Crop</th>
+            <th>Farm Size (ha)</th>
+            <th>Registered</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for farmer in farmers %}
+        <tr>
+            <td>{{ farmer.first_name }} {{ farmer.last_name }}</td>
+            <td>{{ farmer.district }}</td>
+            <td>{{ farmer.ward }}</td>
+            <td>{{ farmer.get_primary_crop_display }}</td>
+            <td>{{ farmer.farm_size_hectares }}</td>
+            <td>{{ farmer.date_registered }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if is_paginated %}
+<nav>
+    <ul class="pagination">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+        {% endif %}
+        <li class="page-item disabled"><span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+{% else %}
+<p class="text-muted">No farmers registered yet. Click "Add Farmer" to register the first one.</p>
+{% endif %}
+{% endblock %}

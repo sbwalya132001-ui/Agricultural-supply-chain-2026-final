@@ -1,0 +1,326 @@
+body {
+    background: linear-gradient(135deg, #edf8ee 0%, #f7fbf6 25%, #ebf7ee 100%);
+    min-height: 100vh;
+    color: #1e2d1f;
+}
+
+main.container {
+    max-width: 100%;
+    padding: 0 1.5rem 2rem;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #177a45;
+    margin: 0;
+}
+
+.page-title {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #1a3a2a;
+}
+
+.metric-card,
+.panel-card {
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(18, 100, 50, 0.08);
+    box-shadow: 0 14px 30px rgba(17, 61, 33, 0.05);
+    border-radius: 1.2rem;
+}
+
+.metric-card {
+    padding: 1.15rem 1.2rem;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.metric-card.green { background: linear-gradient(180deg, rgba(22, 163, 74, 0.08), rgba(255,255,255,0.9)); }
+.metric-card.sky { background: linear-gradient(180deg, rgba(12, 120, 187, 0.08), rgba(255,255,255,0.9)); }
+.metric-card.amber { background: linear-gradient(180deg, rgba(235, 170, 57, 0.08), rgba(255,255,255,0.9)); }
+.metric-card.teal { background: linear-gradient(180deg, rgba(20, 184, 166, 0.08), rgba(255,255,255,0.9)); }
+.metric-card.lilac { background: linear-gradient(180deg, rgba(168, 85, 247, 0.08), rgba(255,255,255,0.9)); }
+
+.metric-label {
+    color: #4b5d52;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+}
+
+.metric-value {
+    font-size: clamp(1.8rem, 2vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+    color: #133b2d;
+}
+
+.metric-value small {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4d5f53;
+}
+
+.panel-card {
+    overflow: hidden;
+}
+
+.panel-header {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid rgba(22, 101, 52, 0.08);
+    background: rgba(247, 253, 249, 0.9);
+}
+
+.panel-header h5 {
+    margin: 0;
+    font-weight: 700;
+    color: #123b2a;
+}
+
+.panel-body {
+    padding: 1.2rem;
+}
+
+.network-list {
+    display: grid;
+    gap: 0.9rem;
+    margin: 0;
+}
+
+.network-list div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(22, 101, 52, 0.08);
+}
+
+.network-list div:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.network-list dt,
+.profile-list dt {
+    color: #55695d;
+    font-weight: 600;
+    margin: 0;
+}
+
+.network-list dd,
+.profile-list dd {
+    margin: 0;
+    font-weight: 700;
+    color: #173d2d;
+}
+
+.profile-list {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.profile-list div {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+}
+
+.stacked-form input,
+.stacked-form select,
+.stacked-form textarea,
+.form-control,
+.form-select {
+    border-radius: 0.8rem;
+    border: 1px solid rgba(22, 101, 52, 0.18);
+    background: rgba(255, 255, 255, 0.7);
+    min-height: 2.8rem;
+}
+
+.stacked-form .btn,
+.btn {
+    border-radius: 0.8rem;
+}
+
+.table {
+    --bs-table-bg: transparent;
+}
+
+.table thead th {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #566b5d;
+    font-weight: 700;
+    background: rgba(238, 246, 240, 0.9);
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
+.login-portal {
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 1.75rem;
+    min-height: calc(100vh - 110px);
+    align-items: center;
+    padding: 1.2rem 0;
+}
+
+.login-hero {
+    position: relative;
+    min-height: 760px;
+    border-radius: 1.8rem;
+    overflow: hidden;
+    box-shadow: 0 28px 60px rgba(15, 74, 36, 0.18);
+    background: #dfeee1;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-hero-copy {
+    padding: 2rem 2.5rem 1rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid rgba(15, 74, 36, 0.08);
+}
+
+.login-hero-copy h1 {
+    font-size: clamp(2.2rem, 3vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.03em;
+    color: #0f6f3d;
+}
+
+.login-hero-copy p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(15, 111, 61, 0.9);
+    max-width: 90%;
+}
+
+.login-hero img {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.1) contrast(1.05) brightness(0.94);
+    transform: scale(1.02);
+}
+
+.login-panel {
+    display: flex;
+    align-items: center;
+}
+
+.login-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.48);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 20px 45px rgba(25, 81, 41, 0.12);
+}
+
+.login-card .card-body {
+    padding: 2rem;
+}
+
+.login-stakeholder-box {
+    padding: 0.75rem 0.2rem 0.5rem;
+}
+
+.login-stakeholder-box .card {
+    border: 1px solid rgba(28, 109, 63, 0.12);
+    background: rgba(248, 255, 249, 0.7);
+    box-shadow: 0 8px 24px rgba(33, 93, 48, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.login-stakeholder-box .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(33, 93, 48, 0.08);
+    border-color: rgba(28, 109, 63, 0.24);
+}
+
+.login-card .btn-success {
+    border-radius: 0.85rem;
+    padding: 0.8rem 1rem;
+    font-weight: 600;
+    box-shadow: 0 10px 20px rgba(25, 135, 84, 0.18);
+}
+
+@media (max-width: 991.98px) {
+    .navbar-brand {
+        font-size: 0.95rem;
+    }
+
+    .navbar-collapse {
+        background: rgba(21, 128, 61, 0.96);
+        border-radius: 0.75rem;
+        margin-top: 0.5rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .navbar-nav {
+        width: 100%;
+        align-items: stretch !important;
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 0.7rem 0.85rem;
+    }
+
+    .navbar .d-flex.align-items-center.gap-2 {
+        width: 100%;
+        justify-content: space-between;
+        padding-top: 0.4rem;
+    }
+
+    main.container {
+        padding: 0 1rem 2rem;
+    }
+
+    .login-portal {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .login-hero {
+        min-height: 320px;
+    }
+
+    .login-hero-copy {
+        padding: 1.5rem 1.5rem 0.75rem;
+    }
+
+    .login-hero-copy p {
+        max-width: 100%;
+    }
+}
+

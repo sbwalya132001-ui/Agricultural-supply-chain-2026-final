@@ -1,0 +1,29 @@
+# --- Core web framework ---
+Django==5.1.15
+
+# --- Forecasting (AI-based demand forecasting: ARIMA) ---
+statsmodels==0.14.2
+pandas==2.2.2
+numpy==1.26.4
+
+# --- Optional: ensemble model comparison (RandomForest) ---
+scikit-learn==1.5.1
+
+# --- Inventory allocation optimization (linear programming) ---
+PuLP==2.9.0
+
+# --- Route optimization (nearest-neighbor + real-world distances) ---
+geopy==2.4.1
+
+# --- Report generation ---
+openpyxl==3.1.5
+reportlab==4.2.2
+
+# --- Seasonal map: pyshp for the boundary build commands; shapely also masks
+#     the SEAS5 field to Zambia when the Ministry refreshes it. The field is
+#     smoothed with scipy (via statsmodels) and tiled with Pillow (via reportlab). ---
+pyshp==3.1.6
+shapely==2.2.0
+
+# --- Environment / dev quality of life ---
+python-decouple==3.8

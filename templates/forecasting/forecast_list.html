@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% block title %}Forecasts - FISP System{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Demand Forecasts</h2>
+    <form method="post" action="{% url 'run_forecast' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success">Generate {{ target_season }} Baseline + Weather Scenario</button>
+    </form>
+</div>
+
+<div class="d-flex flex-wrap align-items-center gap-2 mb-1 sticky-top bg-body py-2" style="top: 0; z-index: 1100;">
+    <span class="fw-semibold">Weather scenario:</span>
+    <div class="btn-group" role="group" aria-label="Weather scenario source">
+        <input type="radio" class="btn-check" name="scenario" id="scenario-zmd" value="zmd" autocomplete="off" {% if scenario == 'zmd' %}checked{% endif %}>
+        <label class="btn btn-outline-primary" for="scenario-zmd">ZMD outlook</label>
+        <input type="radio" class="btn-check" name="scenario" id="scenario-seas5" value="seas5" autocomplete="off" {% if scenario == 'seas5' %}checked{% endif %}>
+        <label class="btn btn-outline-primary" for="scenario-seas5">ECMWF SEAS5</label>
+    </div>
+</div>
+<p class="small text-muted">The switch changes the map and the scenario columns in the forecast table.</p>
+
+{% include "weather/_seasonal_map.html" with map_section_class="mt-2 mb-5" %}
+
+
+
+
+
+
+
+{% if forecasts %}
+<div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-2" id="forecast-table-controls">
+    <div>
+        <h3 class="h5 mb-0">Forecasts for <span id="forecast-district-label">all districts</span></h3>
+        <p class="small text-muted mb-0" id="forecast-district-hint">Click a district on the map, or choose one here, to filter the table.</p>
+    </div>
+    <div class="d-flex align-items-end gap-2">
+        <div>
+            <label class="form-label mb-1 small" for="forecast-district">District</label>
+            <select class="form-select form-select-sm" id="forecast-district">
+                <option value="">All districts</option>
+                {% for district in forecast_districts %}
+                <option value="{{ district }}">{{ district }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="button" class="btn btn-sm btn-outline-secondary" id="forecast-show-all">Show all districts</button>
+    </div>
+</div>
+<table class="table table-striped table-bordered" id="forecast-table">
+    <thead>
+        <tr>
+            <th>District</th>
+            <th>Input Type</th>
+            <th>Forecast Season</th>
+            <th>ARIMA Baseline / Allocation (kg)</th>
+            <th><span class="scenario-zmd">ZMD</span><span class="scenario-seas5">SEAS5</span> Scenario Quantity (kg)</th>
+            <th><span class="scenario-zmd">ZMD</span><span class="scenario-seas5">SEAS5</span> Scenario Adjustment</th>
+            <th>ECMWF IFS Rain Next 10 Days</th>
+            <th>Seasons Used</th>
+            <th>Model</th>
+            <th>Generated</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in forecast_rows %}
+        {% with forecast=row.forecast %}
+        <tr data-district="{{ forecast.district|lower }}">
+            <td>{{ forecast.district }}</td>
+            <td>{{ forecast.get_input_type_display }}</td>
+            <td>{{ forecast.forecast_season }}</td>
+            <td>{{ forecast.allocation_quantity_kg|floatformat:2 }}</td>
+            <td>
+                <span class="scenario-zmd">{% if forecast.weather_summary and forecast.weather_scenario_quantity_kg != None %}{{ forecast.weather_scenario_quantity_kg|floatformat:2 }}{% else %}—{% endif %}</span>
+                <span class="scenario-seas5">{% if forecast.seas5_scenario_quantity_kg != None %}{{ forecast.seas5_scenario_quantity_kg|floatformat:2 }}{% else %}—{% endif %}</span>
+            </td>
+            <td>
+                <div class="scenario-zmd">
+                    {% if forecast.weather_summary %}
+                        {% if forecast.weather_adjustment_percent > 0 %}+{% endif %}{{ forecast.weather_adjustment_percent }}%
+                        <div class="small text-muted">{{ forecast.weather_summary }}</div>
+                    {% else %}<span class="text-muted">No ZMD outlook</span>{% endif %}
+                </div>
+                <div class="scenario-seas5">
+                    {% if forecast.seas5_summary %}
+                        {% if forecast.seas5_adjustment_percent > 0 %}+{% endif %}{{ forecast.seas5_adjustment_percent }}%
+                        <div class="small text-muted">{{ forecast.seas5_summary }}</div>
+                    {% else %}<span class="text-muted">No SEAS5 outlook — refresh on Weather page</span>{% endif %}
+                </div>
+            </td>
+            <td>
+                {% if row.ecmwf_weather %}
+                    {% if row.ecmwf_weather.rainfall_total_mm != None %}{{ row.ecmwf_weather.rainfall_total_mm|floatformat:1 }} mm{% else %}—{% endif %}
+                    <div class="small text-muted">Next {{ row.ecmwf_weather.forecast_days }} days</div>
+                {% else %}Refresh IFS weather on Weather page{% endif %}
+            </td>
+            <td>{{ forecast.seasons_used }}</td>
+            <td>{{ forecast.model_used }}</td>
+            <td>{{ forecast.date_generated }}</td>
+        </tr>
+        {% endwith %}
+        {% endfor %}
+        <tr id="forecast-empty-row" hidden>
+            <td colspan="10" class="text-center text-muted py-4">
+                No forecasts for <strong id="forecast-empty-district"></strong> yet. Add its farmers' historical input usage, then generate a new run.
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% else %}
+<p class="text-muted">No forecasts yet. Click "Run Forecast" above to generate the first batch.</p>
+{% endif %}
+
+{% if backtests %}
+<div class="card mt-4" id="forecast-backtest">
+    <div class="card-body">
+        <h5 class="card-title">How accurate is the national trend? (back-test)</h5>
+        
+        <div class="table-responsive">
+        <table class="table table-sm table-bordered align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Input</th>
+                    <th>National series</th>
+                    <th>Model used</th>
+                    <th>Seasons tested</th>
+                    <th class="text-end">ARIMA(1,1,1)</th>
+                    <th class="text-end">Auto log-ARIMA</th>
+                    <th class="text-end">Naive</th>
+                    <th class="text-end">Drift</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in backtests %}
+                <tr>
+                    <td>{{ row.backtest.get_input_type_display }}</td>
+                    <td class="small">{% if row.series %}{{ row.series.source }}, {{ row.series.unit }}{% else %}—{% endif %}</td>
+                    <td>{{ row.backtest.get_chosen_method_display }}</td>
+                    <td>{{ row.backtest.first_test_season }} – {{ row.backtest.last_test_season }} ({{ row.backtest.steps }} ahead)</td>
+                    {% for method, error in row.errors.items %}
+                    <td class="text-end{% if method == row.best %} fw-bold{% endif %}{% if method == row.backtest.chosen_method %} table-success{% endif %}">{{ error|floatformat:1 }}%</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <p class="text-muted small mt-2 mb-0">Green: the model used. Bold: the lowest error in the row.</p>
+    </div>
+</div>
+{% endif %}
+
+
+<div class="mt-5">
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Import historical demand</h5>
+        <p class="text-muted">Upload a CSV or XLSX with national_id, season, input_type, and quantity_kg. Include a unique usage_event_id column when the file contains multiple usage events for the same farmer, input, and season.</p>
+        <form method="post" action="{% url 'upload_demand_data' %}" enctype="multipart/form-data" class="row g-2 align-items-end">
+            {% csrf_token %}
+            <div class="col-md-8">
+                {{ upload_form.demand_file.label_tag }}
+                {{ upload_form.demand_file }}
+                {% if upload_form.demand_file.help_text %}<div class="form-text">{{ upload_form.demand_file.help_text }}</div>{% endif %}
+                {% for error in upload_form.demand_file.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+            </div>
+            <div class="col-md-4"><button type="submit" class="btn btn-outline-success">Import demand data</button></div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    body[data-scenario="zmd"] .scenario-seas5,
+    body[data-scenario="seas5"] .scenario-zmd { display: none; }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    (function () {
+        let lastZmdLayer = "zmd:{{ seasonal_map.periods.0 }}";
+
+        function showScenario(scenario) {
+            document.body.dataset.scenario = scenario;
+            const radio = document.getElementById('scenario-' + scenario);
+            if (radio) radio.checked = true;
+            const url = new URL(window.location);
+            url.searchParams.set('scenario', scenario);
+            window.history.replaceState(null, '', url);
+        }
+
+        showScenario("{{ scenario }}");
+        document.querySelectorAll('input[name="scenario"]').forEach(function (radio) {
+            radio.addEventListener('change', function () {
+                showScenario(this.value);
+                document.dispatchEvent(new CustomEvent('seasonal-map:set-layer', {
+                    detail: this.value === 'seas5' ? 'seas5' : lastZmdLayer,
+                }));
+            });
+        });
+        // Picking a layer on the map switches the table to the same source.
+        document.addEventListener('seasonal-map:layer-changed', function (event) {
+            if (event.detail.startsWith('zmd:')) lastZmdLayer = event.detail;
+            showScenario(event.detail === 'seas5' ? 'seas5' : 'zmd');
+        });
+
+        // The forecast table follows the district selected on the map.
+        const table = document.getElementById('forecast-table');
+        if (!table) return;
+        const districtSelect = document.getElementById('forecast-district');
+        const rows = table.querySelectorAll('tbody tr[data-district]');
+        const emptyRow = document.getElementById('forecast-empty-row');
+
+        function filterTable(district) {
+            const key = (district || '').toLowerCase();
+            let shown = 0;
+            rows.forEach(function (row) {
+                row.hidden = Boolean(key) && row.dataset.district !== key;
+                if (!row.hidden) shown += 1;
+            });
+            emptyRow.hidden = shown > 0;
+            document.getElementById('forecast-empty-district').textContent = district;
+            document.getElementById('forecast-district-label').textContent = district || 'all districts';
+            const match = [...districtSelect.options].find(function (option) {
+                return option.value.toLowerCase() === key;
+            });
+            districtSelect.value = match ? match.value : '';
+            const url = new URL(window.location);
+            if (district) url.searchParams.set('district', district); else url.searchParams.delete('district');
+            window.history.replaceState(null, '', url);
+        }
+
+        filterTable(JSON.parse(document.getElementById('selected-district').textContent));
+        document.addEventListener('seasonal-map:district-selected', function (event) {
+            filterTable(event.detail);
+        });
+        districtSelect.addEventListener('change', function () {
+            filterTable(this.value);
+            if (this.value) {
+                document.dispatchEvent(new CustomEvent('seasonal-map:select-district', {detail: this.value}));
+            }
+        });
+        document.getElementById('forecast-show-all').addEventListener('click', function () {
+            filterTable('');
+        });
+    })();
+</script>
+{% endblock %}

@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+
+{% block title %}Agro-Dealer Portal - FISP System{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+    <div>
+        <p class="eyebrow mb-2">Agro-dealer operations</p>
+        <h2 class="page-title mb-1">Dealer portal</h2>
+        <p class="text-muted mb-0">Collect inputs from your assigned supplier, record what you actually receive, then serve farmers.</p>
+    </div>
+    <span class="badge bg-success rounded-pill px-3 py-2 fs-6">{{ dealer.name }}</span>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="panel-card h-100">
+            <div class="panel-header">
+                <h5>Dealer profile</h5>
+            </div>
+            <div class="panel-body">
+                <dl class="profile-list mb-0">
+                    <div><dt>Name</dt><dd>{{ dealer.name }}</dd></div>
+                    <div><dt>District</dt><dd>{{ dealer.district }}</dd></div>
+                    <div><dt>Received stock</dt><dd>{{ dealer.stock_quantity_kg|floatformat:2 }} kg</dd></div>
+                    <div><dt>D Compound</dt><dd>{{ dealer.stock_fertilizer_d_kg|floatformat:2 }} kg</dd></div>
+                    <div><dt>Urea</dt><dd>{{ dealer.stock_fertilizer_urea_kg|floatformat:2 }} kg</dd></div>
+                    <div><dt>Maize seed</dt><dd>{{ dealer.stock_seed_maize_kg|floatformat:2 }} kg</dd></div>
+                    <div><dt>Other seed</dt><dd>{{ dealer.stock_seed_other_kg|floatformat:2 }} kg</dd></div>
+                    <div><dt>Soybean seed</dt><dd>{{ dealer.stock_seed_soybeans_kg|floatformat:2 }} kg</dd></div>
+                    <div><dt>Sunflower seed</dt><dd>{{ dealer.stock_seed_sunflower_kg|floatformat:2 }} kg</dd></div>
+                    <div><dt>Popcorn seed</dt><dd>{{ dealer.stock_seed_popcorn_kg|floatformat:2 }} kg</dd></div>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="panel-card h-100">
+            <div class="panel-header">
+                <h5>My delivery assignments</h5>
+            </div>
+            <div class="panel-body">
+                {% if dealer_routes %}
+                    <div class="table-responsive">
+                        <table class="table table-sm align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Route</th>
+                                    <th>Collection supplier</th>
+                                    <th>Allocated cargo</th>
+                                    <th>Distance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in dealer_routes %}
+                                <tr>
+                                    <td>{{ item.route.name }}</td>
+                                    <td>{{ item.supplier.name }} ({{ item.supplier.district }})</td>
+                                    <td>{{ item.leg.allocated_quantity_kg|floatformat:2 }} kg</td>
+                                    <td>{{ item.route.total_distance_km|floatformat:2 }} km</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted mb-0">No delivery assignments have been linked to this agro-dealer yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel-card mb-4">
+    <div class="panel-header">
+        <h5>Inputs awaiting receipt confirmation</h5>
+    </div>
+    <div class="panel-body">
+        <p class="text-muted">Supplier-issued inputs assigned to this agro-dealer appear here. After collecting them, record the quantity actually received. Partial collections can be logged until the issue is fully cleared.</p>
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead>
+                    <tr><th>Supplier</th><th>Input</th><th>Issued</th><th>Received</th><th>Remaining</th><th>Collected now (kg)</th><th>Issue date</th></tr>
+                </thead>
+                <tbody>
+                    {% for dispatch in pending_receipts %}
+                    <tr>
+                        <td>{{ dispatch.supplier.name }} ({{ dispatch.supplier.district }})</td>
+                        <td>{{ dispatch.get_input_type_display }}</td>
+                        <td>{{ dispatch.quantity_kg|floatformat:2 }} kg</td>
+                        <td>{{ dispatch.received_quantity|floatformat:2 }} kg</td>
+                        <td>{{ dispatch.remaining_quantity|floatformat:2 }} kg</td>
+                        <td>
+                            <form method="post" action="{% url 'dealer_confirm_stock_receipt' dispatch.id %}" class="d-flex gap-2 align-items-center">
+                                {% csrf_token %}
+                                <input class="form-control form-control-sm" type="number" name="quantity_kg" min="0.01" max="{{ dispatch.remaining_quantity }}" step="0.01" inputmode="decimal" placeholder="kg" aria-label="Quantity collected in kilograms" required>
+                                <button class="btn btn-success btn-sm text-nowrap" type="submit">Record collection</button>
+                            </form>
+                        </td>
+                        <td>{{ dispatch.dispatched_at|date:'Y-m-d H:i' }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="7" class="text-muted">There are no dispatched inputs awaiting collection.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="panel-card mb-4">
+    <div class="panel-header">
+        <h5>My direct input allocations</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead><tr><th>Input</th><th>Allocated quantity</th><th>Collect from supplier</th><th>District</th><th>Season</th></tr></thead>
+            <tbody>
+                {% for allocation in dealer_allocations %}
+                <tr>
+                    <td>{{ allocation.get_input_type_display }}</td>
+                    <td>{{ allocation.quantity_kg|floatformat:2 }} kg</td>
+                    <td>{{ allocation.supplier.name }}</td>
+                    <td>{{ allocation.supplier.district }}</td>
+                    <td>{{ allocation.forecast.forecast_season }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="5" class="text-muted">No input allocations have been assigned to this dealer yet.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="panel-card mb-4">
+    <div class="panel-header">
+        <h5>Farmer collection register</h5>
+    </div>
+    <div class="panel-body pb-0">
+        <p class="text-muted">These quantities are reserved for farmers who should collect inputs from this registered agro-dealer after delivery.</p>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Farmer</th>
+                    <th>District</th>
+                    <th>Input</th>
+                    <th>Allocated quantity</th>
+                    <th>Collection status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for allocation in farmer_allocations %}
+                <tr>
+                    <td>{{ allocation.farmer.first_name }} {{ allocation.farmer.last_name }}</td>
+                    <td>{{ allocation.farmer.district }}</td>
+                    <td>{{ allocation.get_input_type_display }}</td>
+                    <td>{{ allocation.quantity_kg|floatformat:2 }} kg</td>
+                    <td>
+                        {% if allocation.collection_status == 'collected' %}
+                        <span class="badge bg-success">Collected</span>
+                        {% else %}
+                        <span class="badge bg-warning text-dark">Awaiting collection</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if allocation.collection_status != 'collected' %}
+                        <form method="post" action="{% url 'dealer_confirm_farmer_collection' allocation.pk %}" onsubmit="return confirm('Confirm that this farmer collected the allocated inputs?');">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-success">Confirm collection</button>
+                        </form>
+                        {% else %}
+                        <span class="text-muted">Completed</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="6" class="text-muted">No farmer entitlements are assigned to this dealer yet.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="panel-card">
+    <div class="panel-header">
+        <h5>My supplier collection routes</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th>Route</th>
+                    <th>Supplier</th>
+                    <th>Agro-Dealer</th>
+                    <th>District</th>
+                    <th>Distance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in dealer_routes %}
+                    <tr>
+                        <td>{{ item.route.name }}</td>
+                        <td>{{ item.supplier.name }}</td>
+                        <td>{{ dealer.name }}</td>
+                        <td>{{ item.supplier.district }}</td>
+                        <td>{{ item.route.total_distance_km|floatformat:2 }} km</td>
+                    </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-muted">This agro-dealer has no active route assignments.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% if dealer_routes %}
+<div class="alert alert-info mt-3 rounded-4 border-0 shadow-sm">
+    {% for item in dealer_routes|slice:":1" %}
+        Planned delivery: {{ item.route.planned_delivery_date|default:'Not scheduled' }}
+        {% if item.route.vehicle_identifier %} · Vehicle: {{ item.route.vehicle_identifier }}{% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Run Inventory Allocation</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-4">
+                        This will run the PuLP-based inventory allocation optimization
+                        using the latest forecasts as the required input quantities, then allocate
+                        those quantities directly to agro-dealers and assign each allocation to its district supplier.
+                    </p>
+
+                    <div class="alert alert-info" role="alert">
+                        <strong>Quantities are automatic.</strong> Choose the source for the allocation run, then enter the price per kilogram. The displayed quantities are read-only and recalculated on submission.
+                    </div>
+
+                    <form method="POST">
+                        {% csrf_token %}
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold">Allocation quantity source</label>
+                        <div class="border rounded p-3 bg-light">
+                            {% for choice in form.allocation_quantity_source %}
+                            <div class="form-check mb-2">
+                                {{ choice.tag }}
+                                <label class="form-check-label" for="{{ choice.id_for_label }}">{{ choice.choice_label }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    {% if not has_forecasts %}
+                    <div class="alert alert-warning" role="alert">
+                        No forecasts are available yet. Generate demand forecasts before running an allocation.
+                    </div>
+                    {% endif %}
+
+                    {% if form.non_field_errors %}
+                    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                    {% endif %}
+
+                    <div class="table-responsive mb-4">
+                        <table class="table table-striped align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Input</th>
+                                    <th>Forecast total (kg)</th>
+                                    <th>Price per kg (K)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in allocation_items %}
+                                <tr>
+                                    <th scope="row">{{ item.label }}</th>
+                                    <td data-baseline="{{ item.quantity_by_source.baseline }}" data-zmd_scenario="{{ item.quantity_by_source.zmd_scenario }}" data-seas5_scenario="{{ item.quantity_by_source.seas5_scenario }}">
+                                        {{ item.supply }}
+                                        {% for error in item.supply.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                                    </td>
+                                    <td>
+                                        <label class="visually-hidden" for="{{ item.cost.id_for_label }}">{{ item.cost.label }}</label>
+                                        {{ item.cost }}
+                                        {% for error in item.cost.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr class="table-light">
+                                    <th>Total forecast quantity</th>
+                                    <th id="total-forecast-quantity">{{ total_forecast_quantity|floatformat:2 }} kg</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong>What this does:</strong>
+                        <ul>
+                            <li>Automatically sums the latest district forecasts for each input</li>
+                            <li>Builds a linear optimization model with PuLP</li>
+                            <li>Prioritizes forecast fulfillment and uses cost as a tie-breaker</li>
+                            <li>Assigns each district and input allocation directly to its agro-dealers</li>
+                            <li>Links each dealer allocation to the supplier where the dealer collects inputs</li>
+                            <li>Creates proportional farmer-level allocations and audit records</li>
+                        </ul>
+                    </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="bi bi-play-fill"></i> Start Allocation
+                            </button>
+                            <a href="{% url 'allocation_list' %}" class="btn btn-secondary">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sourceRadios = document.querySelectorAll('input[name="allocation_quantity_source"]');
+        const quantityCells = document.querySelectorAll('[data-baseline][data-zmd_scenario]');
+        const totalCell = document.getElementById('total-forecast-quantity');
+
+        function updateForecastTotals(source) {
+            let total = 0;
+            quantityCells.forEach((cell) => {
+                const value = Number(cell.dataset[source] || 0);
+                total += value;
+                const input = cell.querySelector('input');
+                if (input) {
+                    input.value = value.toFixed(2);
+                }
+            });
+
+            if (totalCell) {
+                totalCell.textContent = total.toFixed(2) + ' kg';
+            }
+        }
+
+        sourceRadios.forEach((radio) => {
+            radio.addEventListener('change', function () {
+                if (this.checked) {
+                    updateForecastTotals(this.value);
+                }
+            });
+        });
+
+        const selectedSource = document.querySelector('input[name="allocation_quantity_source"]:checked');
+        if (selectedSource) {
+            updateForecastTotals(selectedSource.value);
+        }
+    });
+</script>
+{% endblock %}

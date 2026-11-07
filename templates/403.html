@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Access Denied - FISP System{% endblock %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 col-lg-5">
+        <div class="card text-center">
+            <div class="card-body p-5">
+                <h2 class="mb-3">Access denied</h2>
+                <p class="text-muted mb-4">Your stakeholder role does not have access to this module.</p>
+                <a class="btn btn-success" href="{% url 'dashboard_home' %}">Return to dashboard</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

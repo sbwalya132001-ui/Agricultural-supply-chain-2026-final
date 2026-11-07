@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Dealer delivery confirmation - FISP System{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h2 class="mb-3">Confirm delivery for stop</h2>
+        <div class="mb-4">
+            <p class="mb-1"><strong>Dealer:</strong> {{ dealer.name }}</p>
+            <p class="mb-1"><strong>Farmer:</strong> {{ route_stop.farmer.first_name }} {{ route_stop.farmer.last_name }}</p>
+            <p class="mb-1"><strong>District:</strong> {{ route_stop.farmer.district }}</p>
+            <p class="mb-0"><strong>Allocated quantity:</strong> {{ route_stop.allocated_quantity_kg|floatformat:2 }} kg</p>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <div class="mb-3">
+                <label for="id_status" class="form-label">Delivery outcome</label>
+                {{ form.status }}
+                {% if form.status.errors %}<div class="text-danger small">{{ form.status.errors }}</div>{% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="id_message" class="form-label">Notes</label>
+                {{ form.message }}
+                {% if form.message.errors %}<div class="text-danger small">{{ form.message.errors }}</div>{% endif %}
+            </div>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-success">Save delivery outcome</button>
+                <a href="{% url 'dealer_portal' %}" class="btn btn-outline-secondary">Back to portal</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

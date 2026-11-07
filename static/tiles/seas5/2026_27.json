@@ -1,0 +1,19 @@
+{
+  "season": "2026/2027",
+  "retrieved": "2026-11-06",
+  "grid_step_degrees": 0.5,
+  "grid_points": 572,
+  "tiles": 140,
+  "bounds": [
+    21.5,
+    -18.6,
+    34.2,
+    -7.8
+  ],
+  "min_zoom": 4,
+  "max_zoom": 8,
+  "departure_range_percent": [
+    -22.8,
+    9.1
+  ]
+}

@@ -1,0 +1,537 @@
+{% extends 'base.html' %}
+
+{% block title %}Logistics Routes - FISP System{% endblock %}
+
+{% block extra_css %}
+<style>
+    .route-map {
+        position: relative;
+        height: 560px;
+        min-height: 420px;
+        background: #172b3a;
+    }
+
+    .route-marker {
+        display: grid;
+        place-items: center;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    .route-marker-number {
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        background: #e65c3b;
+        box-shadow: 0 2px 8px rgb(0 0 0 / 45%);
+        color: #fff;
+        font-weight: 700;
+    }
+
+    .route-map-error {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        z-index: 2;
+        max-width: 360px;
+        padding: 12px 14px;
+        border-radius: 4px;
+        background: #fff3cd;
+        color: #664d03;
+        font-size: 14px;
+    }
+
+    .supply-marker {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        box-shadow: 0 2px 8px rgb(0 0 0 / 45%);
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .input-supplier-marker {
+        position: relative;
+        z-index: 3;
+        background: #c45b13;
+        border-color: #fff;
+    }
+    .dealer-marker { background: #087f5b; }
+
+    .user-location-marker {
+        width: 22px;
+        height: 22px;
+        border: 4px solid #fff;
+        border-radius: 50%;
+        background: #2563eb;
+        box-shadow: 0 0 0 8px rgb(37 99 235 / 25%), 0 2px 8px rgb(0 0 0 / 45%);
+    }
+
+    .location-controls {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        padding: 0.75rem 1rem;
+        background: #fff;
+    }
+
+    .location-status { margin: 0; }
+
+    .map-legend {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding: 0.65rem 1rem;
+        background: #f8f9fa;
+        border-top: 1px solid #dee2e6;
+        font-size: 0.9rem;
+    }
+
+    .map-legend-item { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .map-legend-swatch {
+        display: inline-grid;
+        place-items: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2>Delivery Routes</h2>
+        <p class="text-muted mb-0">Generated distribution legs are shown from each agro-dealer to its input supplier.</p>
+    </div>
+    <a class="btn btn-primary" href="{% url 'run_route' %}">Generate Route</a>
+</div>
+
+{% if latest_route or suppliers or agro_dealers %}
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <strong>Supply Chain Map</strong>
+        {% if latest_route %}<span>Latest route: {{ latest_route.total_distance_km|floatformat:2 }} km · {{ latest_route.get_status_display }}{% if latest_route.planned_delivery_date %} · {{ latest_route.planned_delivery_date }}{% endif %}</span>{% endif %}
+    </div>
+    {% if mapbox_token %}
+    <div id="route-map" class="route-map"></div>
+    <div class="location-controls">
+        <button id="show-my-location" class="btn btn-outline-primary btn-sm" type="button">Show my location</button>
+        <button id="stop-location-sharing" class="btn btn-outline-secondary btn-sm" type="button" hidden>Stop sharing location</button>
+        <p id="location-status" class="location-status small text-muted" role="status" aria-live="polite">Your location is only displayed on this map and is not saved.</p>
+    </div>
+    <div class="map-legend">
+        <span class="map-legend-item"><span class="map-legend-swatch input-supplier-marker">S</span> Input supplier / collection point</span>
+        <span class="map-legend-item"><span class="map-legend-swatch dealer-marker">A</span> Agro-dealer</span>
+        <span class="map-legend-item"><span class="map-legend-swatch route-marker-number">R</span> Individual dealer-to-supplier route</span>
+    </div>
+    {% else %}
+    <div class="card-body">
+        <div class="alert alert-warning mb-0">Add <code>MAPBOX_ACCESS_TOKEN</code> to the environment to display the Mapbox map.</div>
+    </div>
+    {% endif %}
+</div>
+{% endif %}
+
+{% for route in routes %}
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between">
+        <strong>{{ route.name }}</strong>
+        <span>{{ route.total_distance_km|floatformat:2 }} km · {{ route.get_status_display }}{% if route.vehicle_identifier %} · {{ route.vehicle_identifier }}{% endif %}</span>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead><tr><th>Agro-dealer</th><th>Collection supplier</th><th>District</th><th>Allocated inputs</th><th>Dealer-to-supplier distance</th></tr></thead>
+            <tbody>
+            {% for leg in route.scoped_distribution_legs %}
+                <tr>
+                    <td>{{ leg.agro_dealer.name }}</td>
+                    <td>{{ leg.supplier.name }}</td>
+                    <td>{{ leg.supplier.district }}</td>
+                    <td>{{ leg.allocated_quantity_kg|floatformat:2 }} kg</td>
+                    <td>{{ leg.distance_from_previous_km|floatformat:2 }} km</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% empty %}
+<div class="alert alert-info">No routes have been generated yet.</div>
+{% endfor %}
+{% endblock %}
+
+{% block extra_js %}
+{% if mapbox_token and latest_route or mapbox_token and suppliers or mapbox_token and agro_dealers %}
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js"></script>
+{{ mapbox_token|json_script:"mapbox-token" }}
+{{ map_data|json_script:"map-data" }}
+<script>
+    const mapboxToken = JSON.parse(document.getElementById('mapbox-token').textContent);
+    const mapData = JSON.parse(document.getElementById('map-data').textContent);
+    const routeStops = mapData.routeStops;
+    const inputSuppliers = mapData.inputSuppliers;
+    const agroDealers = mapData.agroDealers;
+    const distributionLegs = mapData.distributionLegs;
+    const farmerCoordinates = routeStops.map((stop) => stop.coordinates);
+
+    function dealerMarkerOffset(dealer, index) {
+        const isNearFarmer = farmerCoordinates.some((coordinates) => {
+            const latitudeScale = Math.cos(dealer.coordinates[1] * Math.PI / 180);
+            const longitudeDelta = (dealer.coordinates[0] - coordinates[0]) * latitudeScale;
+            const latitudeDelta = dealer.coordinates[1] - coordinates[1];
+            return Math.hypot(longitudeDelta, latitudeDelta) < 0.0005;
+        });
+        if (!isNearFarmer) return [0, 0];
+        const offsets = [[0, -46], [46, 0], [0, 46], [-46, 0]];
+        return offsets[index % offsets.length];
+    }
+    const directGeometry = (coordinates) => [coordinates[0], coordinates[1]];
+    const hasRoadGeometry = (geometry) => Array.isArray(geometry) && geometry.length > 1;
+    const directionsUrl = (coordinates) => (
+        `https://api.mapbox.com/directions/v5/mapbox/driving/` +
+        `${coordinates.map((coordinate) => coordinate.join(',')).join(';')}` +
+        `?geometries=geojson&overview=full&access_token=${mapboxToken}`
+    );
+    const fetchRoadGeometry = async (coordinates) => {
+        try {
+            const response = await fetch(directionsUrl(coordinates));
+            if (!response.ok) return directGeometry(coordinates);
+            const payload = await response.json();
+            return payload.routes && payload.routes[0] && payload.routes[0].geometry
+                ? payload.routes[0].geometry.coordinates
+                : directGeometry(coordinates);
+        } catch (error) {
+            console.error('Unable to load road geometry', error);
+            return directGeometry(coordinates);
+        }
+    };
+    const routeSegments = routeStops.map((stop, index) => ({
+        coordinates: index === 0
+            ? [routeStops[0].coordinates, stop.coordinates]
+            : [routeStops[index - 1].coordinates, stop.coordinates],
+        geometry: stop.geometry,
+    }));
+
+    mapboxgl.accessToken = mapboxToken;
+    const zambiaCenter = [27.8, -14.3];
+    const allMapCoordinates = routeStops.map((stop) => stop.coordinates)
+        .concat(inputSuppliers.map((supplier) => supplier.coordinates))
+        .concat(agroDealers.map((dealer) => dealer.coordinates));
+    const defaultMapCenter = allMapCoordinates.length ? allMapCoordinates[0] : zambiaCenter;
+    const map = new mapboxgl.Map({
+        container: 'route-map',
+        style: {
+            version: 8,
+            sources: {
+                'mapbox-streets': {
+                    type: 'raster',
+                    tiles: [
+                        `https://api.mapbox.com/styles/v1/mapbox/streets-v12/tiles/256/{z}/{x}/{y}?access_token=${mapboxToken}`
+                    ],
+                    tileSize: 256,
+                    attribution: '© Mapbox © OpenStreetMap'
+                }
+            },
+            layers: [{
+                id: 'mapbox-streets-layer',
+                type: 'raster',
+                source: 'mapbox-streets'
+            }]
+        },
+        center: defaultMapCenter,
+        zoom: allMapCoordinates.length ? 7 : 5,
+        projection: 'mercator',
+        attributionControl: true
+    });
+    map.addControl(new mapboxgl.NavigationControl());
+
+    const showLocationButton = document.getElementById('show-my-location');
+    const stopLocationButton = document.getElementById('stop-location-sharing');
+    const locationStatus = document.getElementById('location-status');
+    let locationWatchId = null;
+    let userLocationMarker = null;
+    let hasCenteredOnUserLocation = false;
+
+    showLocationButton.addEventListener('click', () => {
+        if (!navigator.geolocation) {
+            locationStatus.textContent = 'This browser does not support location access.';
+            return;
+        }
+        if (locationWatchId !== null) return;
+
+        showLocationButton.disabled = true;
+        locationStatus.textContent = 'Waiting for location permission and GPS position…';
+        locationWatchId = navigator.geolocation.watchPosition(
+            (position) => {
+                const coordinates = [position.coords.longitude, position.coords.latitude];
+                if (!userLocationMarker) {
+                    const markerElement = document.createElement('div');
+                    markerElement.className = 'user-location-marker';
+                    userLocationMarker = new mapboxgl.Marker({element: markerElement})
+                        .setLngLat(coordinates)
+                        .setPopup(new mapboxgl.Popup({offset: 18}).setText('Your current location'))
+                        .addTo(map);
+                } else {
+                    userLocationMarker.setLngLat(coordinates);
+                }
+                if (!hasCenteredOnUserLocation) {
+                    map.flyTo({center: coordinates, zoom: Math.max(map.getZoom(), 13)});
+                    hasCenteredOnUserLocation = true;
+                }
+                showLocationButton.disabled = false;
+                stopLocationButton.hidden = false;
+                locationStatus.textContent = 'Your location is being updated on this map only. It is not saved.';
+            },
+            (error) => {
+                const errorMessages = {
+                    1: 'Location permission was denied. Allow location access in your browser to show your position.',
+                    2: 'Your location is currently unavailable. Check your device location settings and try again.',
+                    3: 'The location request timed out. Please try again.'
+                };
+                if (locationWatchId !== null) navigator.geolocation.clearWatch(locationWatchId);
+                locationWatchId = null;
+                showLocationButton.disabled = false;
+                stopLocationButton.hidden = true;
+                locationStatus.textContent = errorMessages[error.code] || 'Unable to retrieve your location. Please try again.';
+            },
+            {enableHighAccuracy: true, maximumAge: 10000, timeout: 20000}
+        );
+    });
+
+    stopLocationButton.addEventListener('click', () => {
+        if (locationWatchId !== null) navigator.geolocation.clearWatch(locationWatchId);
+        locationWatchId = null;
+        if (userLocationMarker) userLocationMarker.remove();
+        userLocationMarker = null;
+        hasCenteredOnUserLocation = false;
+        showLocationButton.disabled = false;
+        stopLocationButton.hidden = true;
+        locationStatus.textContent = 'Location sharing stopped. Your location was not saved.';
+    });
+
+    inputSuppliers.forEach((supplier) => {
+        const markerElement = document.createElement('div');
+        markerElement.className = 'supply-marker input-supplier-marker';
+        markerElement.textContent = 'S';
+        new mapboxgl.Marker({element: markerElement})
+            .setLngLat(supplier.coordinates)
+            .setPopup(new mapboxgl.Popup({offset: 24}).setHTML(`<strong>Input Supplier / Collection Point</strong><br>${supplier.name}<br>${supplier.district}<br>Agro-dealers collect inputs here.`))
+            .addTo(map);
+    });
+
+    agroDealers.forEach((dealer, index) => {
+        const markerElement = document.createElement('div');
+        markerElement.className = 'supply-marker dealer-marker';
+        markerElement.textContent = 'A';
+        new mapboxgl.Marker({element: markerElement})
+            .setOffset(dealerMarkerOffset(dealer, index))
+            .setLngLat(dealer.coordinates)
+            .setPopup(new mapboxgl.Popup({offset: 24}).setHTML(`<strong>Agro-dealer</strong><br>${dealer.name}<br>${dealer.district}<br>Stock: ${dealer.stock} kg`))
+            .addTo(map);
+    });
+
+    routeStops.forEach((stop) => {
+        const markerElement = document.createElement('div');
+        markerElement.className = 'route-marker';
+        markerElement.innerHTML = `<span class="route-marker-number">${stop.sequence}</span>`;
+        new mapboxgl.Marker({element: markerElement})
+            .setLngLat(stop.coordinates)
+            .setPopup(new mapboxgl.Popup({offset: 24}).setHTML(`<strong>Stop ${stop.sequence}</strong><br>${stop.name}<br>${stop.district}`))
+            .addTo(map);
+    });
+
+    let fallbackStyleLoaded = false;
+    map.on('error', (event) => {
+        const mapElement = document.getElementById('route-map');
+        if (!fallbackStyleLoaded && event.error && event.error.status >= 400) {
+            fallbackStyleLoaded = true;
+            map.setStyle({
+                version: 8,
+                sources: {
+                    'fallback-map': {
+                        type: 'raster',
+                        tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
+                        tileSize: 256,
+                        attribution: '© OpenStreetMap contributors'
+                    }
+                },
+                layers: [{id: 'fallback-map', type: 'raster', source: 'fallback-map'}]
+            });
+            map.once('styledata', () => {
+                if (routeStops.length) {
+                        map.addSource('delivery-route', {
+                    type: 'geojson',
+                    data: {
+                        type: 'Feature',
+                                geometry: {
+                                    type: 'MultiLineString',
+                                    coordinates: routeSegments.map((segment) => (
+                                        hasRoadGeometry(segment.geometry) ? segment.geometry : segment.coordinates
+                                    ))
+                                }
+                    }
+                });
+                map.addLayer({
+                    id: 'delivery-route-line',
+                    type: 'line',
+                    source: 'delivery-route',
+                    paint: {'line-color': '#198754', 'line-width': 4}
+                });
+                }
+                distributionLegs.forEach((leg, index) => {
+                    map.addSource(`supplier-dealer-fallback-${index}`, {
+                        type: 'geojson',
+                        data: {
+                            type: 'Feature',
+                            geometry: {
+                                type: 'LineString',
+                                coordinates: hasRoadGeometry(leg.geometry) ? leg.geometry : leg.coordinates
+                            }
+                        }
+                    });
+                    map.addLayer({
+                        id: `supplier-dealer-fallback-line-${index}`,
+                        type: 'line',
+                        source: `supplier-dealer-fallback-${index}`,
+                        paint: {'line-color': '#7a3e00', 'line-width': 3, 'line-dasharray': [2, 2]}
+                    });
+                });
+                drawRoadRoutes();
+            });
+        }
+        if (!mapElement.dataset.errorShown) {
+            mapElement.dataset.errorShown = 'true';
+            mapElement.insertAdjacentHTML('beforeend', '<div class="route-map-error">Mapbox style unavailable. Showing the route on a fallback street map.</div>');
+        }
+        console.error('Mapbox error', event.error);
+    });
+
+    map.on('load', () => {
+        if (fallbackStyleLoaded) return;
+        if (!routeStops.length) {
+            const supplyCoordinates = inputSuppliers.map((supplier) => supplier.coordinates)
+                .concat(agroDealers.map((dealer) => dealer.coordinates));
+            if (supplyCoordinates.length) {
+                const supplyBounds = supplyCoordinates.reduce(
+                    (result, coordinates) => result.extend(coordinates),
+                    new mapboxgl.LngLatBounds(supplyCoordinates[0], supplyCoordinates[0])
+                );
+                map.fitBounds(supplyBounds, {padding: 60, maxZoom: 12});
+            } else {
+                map.setCenter(zambiaCenter);
+                map.setZoom(5.5);
+            }
+            distributionLegs.forEach((leg, index) => {
+                map.addSource(`supplier-dealer-${index}`, {
+                    type: 'geojson',
+                    data: {
+                        type: 'Feature',
+                        geometry: {
+                            type: 'LineString',
+                            coordinates: hasRoadGeometry(leg.geometry) ? leg.geometry : leg.coordinates
+                        }
+                    }
+                });
+                map.addLayer({
+                    id: `supplier-dealer-line-${index}`,
+                    type: 'line',
+                    source: `supplier-dealer-${index}`,
+                    paint: {'line-color': '#7a3e00', 'line-width': 3, 'line-dasharray': [2, 2]}
+                });
+            });
+            drawRoadRoutes();
+            return;
+        }
+        map.addSource('delivery-route', {
+            type: 'geojson',
+            data: {
+                type: 'Feature',
+                geometry: {
+                    type: 'MultiLineString',
+                    coordinates: routeSegments.map((segment) => (
+                        hasRoadGeometry(segment.geometry) ? segment.geometry : segment.coordinates
+                    ))
+                }
+            }
+        });
+        map.addLayer({
+            id: 'delivery-route-line',
+            type: 'line',
+            source: 'delivery-route',
+            paint: {'line-color': '#198754', 'line-width': 4}
+        });
+        distributionLegs.forEach((leg, index) => {
+            map.addSource(`supplier-dealer-${index}`, {
+                type: 'geojson',
+                data: {
+                    type: 'Feature',
+                    geometry: {
+                        type: 'LineString',
+                        coordinates: hasRoadGeometry(leg.geometry) ? leg.geometry : leg.coordinates
+                    }
+                }
+            });
+            map.addLayer({
+                id: `supplier-dealer-line-${index}`,
+                type: 'line',
+                source: `supplier-dealer-${index}`,
+                paint: {'line-color': '#7a3e00', 'line-width': 3, 'line-dasharray': [2, 2]}
+            });
+        });
+        const allCoordinates = routeStops.map((stop) => stop.coordinates)
+            .concat(inputSuppliers.map((supplier) => supplier.coordinates))
+            .concat(agroDealers.map((dealer) => dealer.coordinates));
+        if (allCoordinates.length) {
+            const bounds = allCoordinates.reduce(
+                (result, coordinates) => result.extend(coordinates),
+                new mapboxgl.LngLatBounds(allCoordinates[0], allCoordinates[0])
+            );
+            map.fitBounds(bounds, {padding: 60, maxZoom: 12});
+        } else {
+            map.setCenter(zambiaCenter);
+            map.setZoom(5.5);
+        }
+        drawRoadRoutes();
+    });
+
+    async function drawRoadRoutes() {
+        const routeGeometries = await Promise.all(routeSegments.map(async (segment) => (
+            hasRoadGeometry(segment.geometry)
+                ? segment.geometry
+                : await fetchRoadGeometry(segment.coordinates)
+        )));
+        const distributionGeometries = await Promise.all(distributionLegs.map(async (leg) => (
+            hasRoadGeometry(leg.geometry)
+                ? leg.geometry
+                : await fetchRoadGeometry(leg.coordinates)
+        )));
+        if (map.getSource('delivery-route')) {
+            map.getSource('delivery-route').setData({
+                type: 'Feature',
+                geometry: {type: 'MultiLineString', coordinates: routeGeometries}
+            });
+        }
+        distributionGeometries.forEach((geometry, index) => {
+            const source = map.getSource(`supplier-dealer-${index}`) || map.getSource(`supplier-dealer-fallback-${index}`);
+            if (source) source.setData({
+                type: 'Feature',
+                geometry: {type: 'LineString', coordinates: geometry}
+            });
+        });
+    }
+</script>
+{% endif %}
+{% endblock %}

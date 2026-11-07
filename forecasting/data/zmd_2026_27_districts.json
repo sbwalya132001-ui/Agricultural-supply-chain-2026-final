@@ -1,0 +1,3022 @@
+{
+ "districts": {
+  "Chadiza": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.98
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.98
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM103001",
+   "province": "Eastern"
+  },
+  "Chama": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.987
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 0.686
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.996
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM103015",
+   "province": "Eastern"
+  },
+  "Chasefu": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.956
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.956
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM103010",
+   "province": "Eastern"
+  },
+  "Chavuma": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM108001",
+   "province": "North-Western"
+  },
+  "Chembe": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.978
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.768
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM104001",
+   "province": "Luapula"
+  },
+  "Chibombo": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM101001",
+   "province": "Central"
+  },
+  "Chienge": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 0.987
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.987
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM104002",
+   "province": "Luapula"
+  },
+  "Chifunabuli": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM104012",
+   "province": "Luapula"
+  },
+  "Chikankata": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109001",
+   "province": "Southern"
+  },
+  "Chilanga": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM105001",
+   "province": "Lusaka"
+  },
+  "Chililabombwe": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.95
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.95
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM102001",
+   "province": "Copperbelt"
+  },
+  "Chilubi": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 0.548
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM107001",
+   "province": "Northern"
+  },
+  "Chingola": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM102002",
+   "province": "Copperbelt"
+  },
+  "Chinsali": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM106002",
+   "province": "Muchinga"
+  },
+  "Chipangali": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.721
+    }
+   },
+   "pcode": "ZM103011",
+   "province": "Eastern"
+  },
+  "Chipata": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.703
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.985
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.985
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM103002",
+   "province": "Eastern"
+  },
+  "Chipili": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.88
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM104003",
+   "province": "Luapula"
+  },
+  "Chirundu": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM105002",
+   "province": "Lusaka"
+  },
+  "Chisamba": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM101002",
+   "province": "Central"
+  },
+  "Chitambo": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.929
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.989
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.863
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.928
+    }
+   },
+   "pcode": "ZM101003",
+   "province": "Central"
+  },
+  "Choma": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109002",
+   "province": "Southern"
+  },
+  "Chongwe": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM105003",
+   "province": "Lusaka"
+  },
+  "Gwembe": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109003",
+   "province": "Southern"
+  },
+  "Ikelenge": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.973
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.973
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.991
+    }
+   },
+   "pcode": "ZM108002",
+   "province": "North-Western"
+  },
+  "Isoka": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 0.998
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.998
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM106003",
+   "province": "Muchinga"
+  },
+  "Itezhi-Tezhi": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109014",
+   "province": "Southern"
+  },
+  "Kabompo": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.584
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM108003",
+   "province": "North-Western"
+  },
+  "Kabwe": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM101005",
+   "province": "Central"
+  },
+  "Kafue": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM105004",
+   "province": "Lusaka"
+  },
+  "Kalabo": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.732
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM110001",
+   "province": "Western"
+  },
+  "Kalomo": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109004",
+   "province": "Southern"
+  },
+  "Kalulushi": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM102003",
+   "province": "Copperbelt"
+  },
+  "Kalumbila": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM108010",
+   "province": "North-Western"
+  },
+  "Kanchibiya": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.985
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.72
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM106008",
+   "province": "Muchinga"
+  },
+  "Kaoma": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.987
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM110002",
+   "province": "Western"
+  },
+  "Kapiri Mposhi": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.866
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.966
+    }
+   },
+   "pcode": "ZM101006",
+   "province": "Central"
+  },
+  "Kaputa": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM107002",
+   "province": "Northern"
+  },
+  "Kasama": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 0.997
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM107003",
+   "province": "Northern"
+  },
+  "Kasempa": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.798
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.729
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.885
+    }
+   },
+   "pcode": "ZM108004",
+   "province": "North-Western"
+  },
+  "Kasenengwa": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.599
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM103012",
+   "province": "Eastern"
+  },
+  "Katete": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.987
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.987
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM103003",
+   "province": "Eastern"
+  },
+  "Kawambwa": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 0.964
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM104004",
+   "province": "Luapula"
+  },
+  "Kazungula": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.994
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.994
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109005",
+   "province": "Southern"
+  },
+  "Kitwe": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.999
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.999
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM102004",
+   "province": "Copperbelt"
+  },
+  "Lavushimanda": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.781
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.511
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.898
+    }
+   },
+   "pcode": "ZM106009",
+   "province": "Muchinga"
+  },
+  "Limulunga": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM110003",
+   "province": "Western"
+  },
+  "Livingstone": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.976
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.976
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109006",
+   "province": "Southern"
+  },
+  "Luampa": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.562
+    }
+   },
+   "pcode": "ZM110004",
+   "province": "Western"
+  },
+  "Luangwa": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.985
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.985
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM105005",
+   "province": "Lusaka"
+  },
+  "Luano": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.901
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.964
+    }
+   },
+   "pcode": "ZM101007",
+   "province": "Central"
+  },
+  "Luanshya": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.556
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM102005",
+   "province": "Copperbelt"
+  },
+  "Lufwanyama": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.712
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM102006",
+   "province": "Copperbelt"
+  },
+  "Lukulu": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.7
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM110005",
+   "province": "Western"
+  },
+  "Lumezi": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.907
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.694
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM103013",
+   "province": "Eastern"
+  },
+  "Lundazi": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.94
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.939
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.939
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM103004",
+   "province": "Eastern"
+  },
+  "Lunga": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM104005",
+   "province": "Luapula"
+  },
+  "Lunte": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM107011",
+   "province": "Northern"
+  },
+  "Lupososhi": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 0.531
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM107012",
+   "province": "Northern"
+  },
+  "Lusaka": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM105006",
+   "province": "Lusaka"
+  },
+  "Lusangazi": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM103014",
+   "province": "Eastern"
+  },
+  "Luwingu": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM107004",
+   "province": "Northern"
+  },
+  "Mafinga": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 0.988
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.988
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM106004",
+   "province": "Muchinga"
+  },
+  "Mambwe": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.71
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.826
+    }
+   },
+   "pcode": "ZM103005",
+   "province": "Eastern"
+  },
+  "Mansa": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.993
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.993
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM104006",
+   "province": "Luapula"
+  },
+  "Manyinga": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.884
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.994
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.994
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM108005",
+   "province": "North-Western"
+  },
+  "Masaiti": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.941
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.979
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.979
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.959
+    }
+   },
+   "pcode": "ZM102007",
+   "province": "Copperbelt"
+  },
+  "Mazabuka": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109007",
+   "province": "Southern"
+  },
+  "Mbala": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM107005",
+   "province": "Northern"
+  },
+  "Milenge": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.927
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.985
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.611
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM104007",
+   "province": "Luapula"
+  },
+  "Mitete": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.994
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.757
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM110006",
+   "province": "Western"
+  },
+  "Mkushi": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.999
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.887
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.7
+    }
+   },
+   "pcode": "ZM101008",
+   "province": "Central"
+  },
+  "Mongu": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM110007",
+   "province": "Western"
+  },
+  "Monze": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109008",
+   "province": "Southern"
+  },
+  "Mpika": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.54
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.926
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.929
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM106005",
+   "province": "Muchinga"
+  },
+  "Mpongwe": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.89
+    }
+   },
+   "pcode": "ZM102008",
+   "province": "Copperbelt"
+  },
+  "Mporokoso": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM107006",
+   "province": "Northern"
+  },
+  "Mpulungu": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM107007",
+   "province": "Northern"
+  },
+  "Mufulira": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.899
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.899
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM102009",
+   "province": "Copperbelt"
+  },
+  "Mufumbwe": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.837
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.65
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.982
+    }
+   },
+   "pcode": "ZM108006",
+   "province": "North-Western"
+  },
+  "Mulobezi": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM110008",
+   "province": "Western"
+  },
+  "Mumbwa": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.969
+    }
+   },
+   "pcode": "ZM101009",
+   "province": "Central"
+  },
+  "Mungwi": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM107008",
+   "province": "Northern"
+  },
+  "Mushindamo": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.956
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.923
+    }
+   },
+   "pcode": "ZM108011",
+   "province": "North-Western"
+  },
+  "Mwandi": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.996
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.996
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM110009",
+   "province": "Western"
+  },
+  "Mwansabombwe": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.712
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM104008",
+   "province": "Luapula"
+  },
+  "Mwense": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.992
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.992
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM104009",
+   "province": "Luapula"
+  },
+  "Mwinilunga": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.997
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.997
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.809
+    }
+   },
+   "pcode": "ZM108007",
+   "province": "North-Western"
+  },
+  "Nakonde": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 0.999
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.999
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM106006",
+   "province": "Muchinga"
+  },
+  "Nalolo": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM110010",
+   "province": "Western"
+  },
+  "Namwala": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109009",
+   "province": "Southern"
+  },
+  "Nchelenge": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM104010",
+   "province": "Luapula"
+  },
+  "Ndola": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.864
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.963
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.963
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM102010",
+   "province": "Copperbelt"
+  },
+  "Ngabwe": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.574
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.594
+    }
+   },
+   "pcode": "ZM101010",
+   "province": "Central"
+  },
+  "Nkeyema": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.727
+    }
+   },
+   "pcode": "ZM110011",
+   "province": "Western"
+  },
+  "Nsama": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM107009",
+   "province": "Northern"
+  },
+  "Nyimba": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.996
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.584
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.622
+    }
+   },
+   "pcode": "ZM103006",
+   "province": "Eastern"
+  },
+  "Pemba": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109010",
+   "province": "Southern"
+  },
+  "Petauke": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.981
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.836
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.876
+    }
+   },
+   "pcode": "ZM103007",
+   "province": "Eastern"
+  },
+  "Rufunsa": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM105007",
+   "province": "Lusaka"
+  },
+  "Samfya": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.998
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.995
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 0.963
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM104011",
+   "province": "Luapula"
+  },
+  "Senanga": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.648
+    }
+   },
+   "pcode": "ZM110012",
+   "province": "Western"
+  },
+  "Senga Hill": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM107010",
+   "province": "Northern"
+  },
+  "Serenje": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.707
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.999
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.999
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.915
+    }
+   },
+   "pcode": "ZM101011",
+   "province": "Central"
+  },
+  "Sesheke": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.991
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.991
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM110013",
+   "province": "Western"
+  },
+  "Shangombo": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.996
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.996
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.924
+    }
+   },
+   "pcode": "ZM110014",
+   "province": "Western"
+  },
+  "Shibuyunji": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM101012",
+   "province": "Central"
+  },
+  "Shiwang'andu": {
+   "outlook": {
+    "DJF": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "normal_above",
+     "confidence": "very high",
+     "share": 0.956
+    },
+    "NDJ": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "above",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM106007",
+   "province": "Muchinga"
+  },
+  "Siavonga": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109011",
+   "province": "Southern"
+  },
+  "Sikongo": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.972
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM110015",
+   "province": "Western"
+  },
+  "Sinazongwe": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.993
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.993
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109012",
+   "province": "Southern"
+  },
+  "Sinda": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.975
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.975
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM103008",
+   "province": "Eastern"
+  },
+  "Sioma": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.996
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.996
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.772
+    }
+   },
+   "pcode": "ZM110016",
+   "province": "Western"
+  },
+  "Solwezi": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.998
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.998
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM108008",
+   "province": "North-Western"
+  },
+  "Vubwi": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.934
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.934
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM103009",
+   "province": "Eastern"
+  },
+  "Zambezi": {
+   "outlook": {
+    "DJF": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 0.602
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "NDJ": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    },
+    "OND": {
+     "category": "normal_below",
+     "confidence": "moderate",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM108009",
+   "province": "North-Western"
+  },
+  "Zimba": {
+   "outlook": {
+    "DJF": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    },
+    "JFM": {
+     "category": "below",
+     "confidence": "moderate",
+     "share": 0.998
+    },
+    "NDJ": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 0.998
+    },
+    "OND": {
+     "category": "below",
+     "confidence": "very high",
+     "share": 1.0
+    }
+   },
+   "pcode": "ZM109013",
+   "province": "Southern"
+  }
+ },
+ "method": "Majority zone by area within each OCHA admin-2 district",
+ "source": "ZMD 2026/2027 seasonal rainfall outlook consensus zones"
+}

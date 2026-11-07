@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Generate Route - FISP System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header"><h5 class="mb-0">Generate Delivery Route</h5></div>
+            <div class="card-body">
+                <p class="text-muted">The system will create an individual collection path from each allocated agro-dealer to the supplier assigned to that dealer.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="mb-3">
+                        <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% for error in field.errors %}<div class="text-danger small">{{ error }}</div>{% endfor %}
+                    </div>
+                    {% endfor %}
+                    <button class="btn btn-success" type="submit">Generate Route</button>
+                    <a class="btn btn-secondary" href="{% url 'route_list' %}">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

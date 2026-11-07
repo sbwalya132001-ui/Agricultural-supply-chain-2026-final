@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - FISP System{% endblock %}
+{% block content %}
+<div class="page-header mb-4">
+    <div>
+        <p class="eyebrow mb-2">Operations overview</p>
+        <h2 class="page-title mb-1">Monitoring Dashboard</h2>
+        <p class="text-muted mb-0">Live supply-chain visibility across suppliers, agro-dealers, and farmer delivery routes.</p>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-xl-5 g-3 mb-4">
+    <div class="col">
+        <div class="metric-card green">
+            <span class="metric-label">Registered farmers</span>
+            <div class="metric-value">{{ kpis.registered_farmers }}</div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="metric-card sky">
+            <span class="metric-label">Forecast demand</span>
+            <div class="metric-value">{{ kpis.forecast_demand_kg|floatformat:0 }} <small>kg</small></div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="metric-card amber">
+            <span class="metric-label">Allocated inputs</span>
+            <div class="metric-value">{{ kpis.allocated_inputs_kg|floatformat:0 }} <small>kg</small></div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="metric-card teal">
+            <span class="metric-label">Total Available Stock</span>
+            <div class="metric-value">{{ kpis.total_available_stock_kg|floatformat:0 }} <small>kg</small></div>
+            <small class="text-muted d-block mt-2">Current dealer stock after confirmed collections</small>
+        </div>
+    </div>
+    <div class="col">
+        <div class="metric-card lilac">
+            <span class="metric-label">Dealer Collection Routes</span>
+            <div class="metric-value">{{ kpis.route_legs }}</div>
+            <small class="text-muted d-block mt-2">Agro-dealer to supplier</small>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="panel-card h-100">
+            <div class="panel-header">
+                <h5>Allocated inputs by district</h5>
+            </div>
+            <div class="panel-body">
+                <canvas id="allocationChart" height="120"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel-card h-100">
+            <div class="panel-header">
+                <h5>Network coverage</h5>
+            </div>
+            <div class="panel-body">
+                <dl class="network-list mb-0">
+                    <div><dt>Active suppliers</dt><dd>{{ kpis.active_suppliers }}</dd></div>
+                    <div><dt>Agro-dealers</dt><dd>{{ kpis.agro_dealers }}</dd></div>
+                    <div><dt>Collection routes</dt><dd>{{ kpis.route_legs }}</dd></div>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const ctx = document.getElementById('allocationChart');
+    const labels = JSON.parse('{{ district_allocation_labels|escapejs }}');
+    const values = JSON.parse('{{ district_allocation_values|escapejs }}');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Allocated inputs (kg)',
+                data: values,
+                backgroundColor: '#198754',
+                borderRadius: 8,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: { y: { beginAtZero: true } },
+            plugins: { legend: { display: false } }
+        }
+    });
+</script>
+{% endblock %}

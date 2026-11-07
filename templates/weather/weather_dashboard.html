@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Weather Forecast - FISP System{% endblock %}
+{% block extra_css %}
+<style>
+    .weather-icon { font-size: 2.6rem; line-height: 1; filter: drop-shadow(0 1px 2px rgba(15, 37, 64, .25)); }
+    .weather-icon-sm { font-size: 1.15rem; line-height: 1; }
+    .weather-tone-sun { color: #e59a00; }
+    .weather-tone-cloud { color: #4a5868; }
+    .weather-tone-rain { color: #1f5fb4; }
+    .weather-tone-storm { color: #4b2f99; }
+
+    /* Forecast cards: a soft, blurred sky behind crisp text. The sky is drawn on
+       a blurred pseudo-element so nothing on the card itself is blurred. */
+    .sky-card { position: relative; overflow: hidden; isolation: isolate; color: #0f2540; }
+    .sky-card::before {
+        content: ""; position: absolute; inset: -40px; z-index: -1;
+        filter: blur(22px);
+        background:
+            radial-gradient(ellipse 55% 35% at 25% 78%, rgba(255, 255, 255, .95), transparent 70%),
+            radial-gradient(ellipse 45% 28% at 70% 60%, rgba(255, 255, 255, .8), transparent 70%),
+            var(--sky-glow, radial-gradient(circle at 85% 12%, rgba(255, 255, 255, 0), transparent 40%)),
+            linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 85%);
+    }
+    .sky-card::after {
+        /* A light veil keeps every line of text on a pale, even background. */
+        content: ""; position: absolute; inset: 0; z-index: -1;
+        background: linear-gradient(180deg, rgba(255, 255, 255, .15) 0%, rgba(255, 255, 255, .55) 45%, rgba(255, 255, 255, .7) 100%);
+    }
+    .sky-sun { --sky-top: #9fd0f7; --sky-bottom: #eef7fe;
+               --sky-glow: radial-gradient(circle at 85% 12%, rgba(255, 210, 110, .75), transparent 42%); }
+    .sky-cloud { --sky-top: #b9c8d6; --sky-bottom: #eff3f7; }
+    .sky-rain { --sky-top: #9fb4ca; --sky-bottom: #e7eef5; }
+    .sky-storm { --sky-top: #a6a7c8; --sky-bottom: #e9e9f3; }
+    .sky-card .sky-muted { color: #2f4560; font-weight: 600; }
+    .sky-card strong, .sky-card h3 { font-weight: 700; }
+    .sky-card .sky-temp { font-weight: 700; color: #0f2540; }
+    .sky-card .sky-rule { border-top: 1px solid rgba(15, 37, 64, .14); }
+</style>
+{% endblock %}
+{% block content %}
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div>
+        <p class="text-success text-uppercase fw-semibold small mb-1">Weather intelligence</p>
+        <h1 class="h2 mb-1">{{ selected_district|default:"District" }} forecast</h1>
+        <p class="text-muted mb-0">Global-model temperature consensus (ECMWF IFS, NOAA GFS, DWD ICON), ECMWF IFS rainfall and the SEAS5 seasonal rainfall outlook.</p>
+    </div>
+    <div class="d-flex flex-wrap align-items-end gap-2">
+    <form method="post" class="d-flex flex-wrap align-items-end gap-2">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="refresh_short_range">
+        {% if can_select_district %}
+        <div>
+            <label class="form-label mb-1" for="weather-district">District</label>
+            <select class="form-select" id="weather-district" name="district">
+                {% for district in districts %}
+                <option value="{{ district }}" {% if district == selected_district %}selected{% endif %}>{{ district }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% else %}
+        <input type="hidden" name="district" value="{{ selected_district }}">
+        {% endif %}
+        <button type="submit" class="btn btn-success" {% if not selected_district %}disabled{% endif %}>Refresh global-model weather</button>
+    </form>
+    <form method="post" class="d-flex flex-wrap align-items-end gap-2">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="refresh_seasonal">
+        {% if can_select_district %}
+        <div>
+            <label class="form-label mb-1" for="seasonal-weather-district">District for seasonal outlook</label>
+            <select class="form-select" id="seasonal-weather-district" name="district">
+                {% for district in districts %}
+                <option value="{{ district }}" {% if district == selected_district %}selected{% endif %}>{{ district }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% else %}
+        <input type="hidden" name="district" value="{{ selected_district }}">
+        {% endif %}
+        <button type="submit" class="btn btn-outline-success" {% if not selected_district %}disabled{% endif %}>Refresh SEAS5 seasonal outlook</button>
+    </form>
+    </div>
+</div>
+
+{% if latest_update %}
+<p class="small text-muted mb-3">Latest weather data update {{ latest_update|date:"M j, Y, H:i T" }}</p>
+{% endif %}
+
+{% if forecasts %}
+<section>
+    <h2 class="h4 mb-1">Next 10-day forecast</h2>
+    <p class="small text-muted mb-3">Temperatures are the mean of the global models available for each day; the spread shows how far the models' maximums disagree. Rainfall and humidity come from ECMWF IFS.</p>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4 g-3">
+        {% for day in forecasts %}
+        <div class="col">
+            <article class="card h-100 border-0 shadow-sm rounded-4 sky-card sky-{{ day.condition.tone|default:'sun' }}">
+                <div class="card-body p-4">
+                    <p class="sky-muted small mb-1">{{ day.date|date:"D, M j" }}</p>
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h3 class="h5 mb-0">{{ day.date|date:"l" }}</h3>
+                        {% if day.condition %}<i class="bi {{ day.condition.icon }} weather-icon weather-tone-{{ day.condition.tone }}" role="img" aria-label="{{ day.condition.label }}" title="{{ day.condition.label }}"></i>{% endif %}
+                    </div>
+                    {% if day.condition %}<p class="small sky-muted mb-2">{{ day.condition.label }}</p>{% endif %}
+                    <div class="display-6 sky-temp mb-3">
+                        {% if day.temperature_max_c != None %}{{ day.temperature_max_c|floatformat:0 }}°{% else %}—{% endif %}
+                        <span class="sky-muted fs-5">/ {% if day.temperature_min_c != None %}{{ day.temperature_min_c|floatformat:0 }}°{% else %}—{% endif %}</span>
+                    </div>
+                    <div class="d-flex justify-content-between sky-rule py-2 small"><span class="sky-muted">Rainfall</span><strong>{% if day.rainfall_mm != None %}{{ day.rainfall_mm|floatformat:1 }} mm{% else %}—{% endif %}</strong></div>
+                    <div class="d-flex justify-content-between sky-rule py-2 small"><span class="sky-muted">Average humidity</span><strong>{% if day.humidity_mean_percent != None %}{{ day.humidity_mean_percent|floatformat:0 }}%{% else %}—{% endif %}</strong></div>
+                    <div class="sky-rule pt-2 small">
+                        <div class="d-flex justify-content-between mb-1"><span class="sky-muted">Model max spread</span><strong>{% if day.temperature_max_spread_c != None %}{{ day.temperature_max_spread_c|floatformat:1 }}°{% else %}—{% endif %}</strong></div>
+                        {% for item in day.model_temperatures %}
+                        <div class="d-flex justify-content-between sky-muted"><span>{{ item.label }}</span><span>{% if item.row %}{{ item.row.temperature_max_c|floatformat:0 }}° / {{ item.row.temperature_min_c|floatformat:0 }}°{% else %}—{% endif %}</span></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </article>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% else %}
+<div class="alert alert-light border">No daily forecast is cached. Choose a district and refresh global-model weather to retrieve recent readings and the next ten days.</div>
+{% endif %}
+
+<section class="mt-5">
+    <div class="d-flex flex-wrap justify-content-between align-items-baseline gap-2">
+        <div>
+            <h2 class="h4 mb-1">ECMWF SEAS5 monthly rainfall outlook</h2>
+            <p class="small text-muted mb-3">Monthly seasonal guidance from Open-Meteo; anomaly is relative to the model's own climatology, not ZMD's 1991–2020 baseline.</p>
+        </div>
+    </div>
+    {% if seasonal_outlooks %}
+    {% regroup seasonal_outlooks by retrieved_date as outlook_snapshots %}
+    {% with snapshot=outlook_snapshots.0 %}
+    <p class="small text-muted">Latest retrieval: {{ snapshot.grouper|date:"M j, Y" }} · ECMWF SEAS5 · Approx. 36 km grid · Not bias-corrected</p>
+    {% if season_rainfall %}
+    <div class="alert alert-light border">
+        <strong>{{ season_rainfall.season }} Oct–Mar rainfall:</strong>
+        {% if season_rainfall.anomaly_percent > 0 %}+{% endif %}{{ season_rainfall.anomaly_percent }}% vs model normal
+        ({{ season_rainfall.months }} months) → <strong>{{ season_rainfall.category }}</strong>.
+        This category sets the SEAS5 demand scenario on the Forecasts page.
+    </div>
+    {% endif %}
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead><tr><th>Valid month</th><th>Monthly mean rainfall</th><th>Anomaly vs model normal</th><th>Planning signal</th></tr></thead>
+            <tbody>
+            {% for outlook in snapshot.list %}
+                <tr>
+                    <td>{{ outlook.valid_month|date:"F Y" }}</td>
+                    <td>{% if outlook.precipitation_mean_mm != None %}{{ outlook.precipitation_mean_mm|floatformat:1 }} mm{% else %}—{% endif %}</td>
+                    <td>{% if outlook.precipitation_anomaly_mm != None %}{% if outlook.precipitation_anomaly_mm > 0 %}+{% endif %}{{ outlook.precipitation_anomaly_mm|floatformat:1 }} mm{% else %}—{% endif %}</td>
+                    <td>{% if outlook.precipitation_anomaly_mm != None %}{% if outlook.precipitation_anomaly_mm > 0 %}Wetter signal{% elif outlook.precipitation_anomaly_mm < 0 %}Drier signal{% else %}Near model normal{% endif %}{% else %}Unavailable{% endif %}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endwith %}
+    {% else %}
+    <div class="alert alert-light border">No seasonal outlook is cached yet. Choose a district and refresh the SEAS5 outlook.</div>
+    {% endif %}
+    <div class="alert alert-warning small mt-3" role="alert">
+        The SEAS5 outlook is broad-area, non-bias-corrected guidance and may not reflect local district conditions. It drives the SEAS5 demand scenario only; inventory allocations still use the ARIMA baseline.
+    </div>
+</section>
+
+{% include "weather/_seasonal_map.html" with initial_map_layer="seas5" %}
+
+{% if recent_weather %}
+<section class="mt-5">
+    <h2 class="h4 mb-3">Recent 31-day ECMWF IFS weather history</h2>
+    <p class="small text-muted">Historical values are model data, not guaranteed local rain-gauge observations.</p>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead><tr><th>Date</th><th>Conditions</th><th>Minimum temperature</th><th>Maximum temperature</th><th>Rain (mm)</th><th>Mean humidity</th></tr></thead>
+            <tbody>
+                {% for day in recent_weather %}
+                <tr>
+                    <td>{{ day.date|date:"D, M j" }}</td>
+                    <td>{% if day.condition %}<i class="bi {{ day.condition.icon }} weather-icon-sm weather-tone-{{ day.condition.tone }} me-1" aria-hidden="true"></i>{{ day.condition.label }}{% else %}—{% endif %}</td>
+                    <td>{% if day.temperature_min_c != None %}{{ day.temperature_min_c|floatformat:1 }}°C{% else %}—{% endif %}</td>
+                    <td>{% if day.temperature_max_c != None %}{{ day.temperature_max_c|floatformat:1 }}°C{% else %}—{% endif %}</td>
+                    <td>{% if day.rainfall_mm != None %}{{ day.rainfall_mm|floatformat:1 }}{% else %}—{% endif %}</td>
+                    <td>{% if day.humidity_mean_percent != None %}{{ day.humidity_mean_percent|floatformat:0 }}%{% else %}—{% endif %}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endif %}
+<p class="small text-muted mt-4">The global-model forecast is short-range context; it does not change seasonal demand quantities. SEAS5 provides separate, uncertain seasonal guidance.</p>
+{% endblock %}

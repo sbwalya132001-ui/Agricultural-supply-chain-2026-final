@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environment
+venv/
+env/
+
+# Django (db.sqlite3 is committed so the demo data and logins come with the repo)
+*.sqlite3-*
+*.sqlite3.bak
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
+db.sqlite3.bak
+staticfiles/
+media/
+*.log
+
+# Environment variables
+.env
+
+# Editor
+.vscode/
+*.pyc
+
+# Test and tooling caches
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/

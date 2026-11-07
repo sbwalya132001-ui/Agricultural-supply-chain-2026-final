@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}Supplier Stock - FISP System{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+    <div>
+        <p class="eyebrow mb-2">Supplier operations</p>
+        <h2 class="page-title mb-1">{{ district }} supplier stock</h2>
+        <p class="text-muted mb-0">Manage supplier inventories and record inputs issued to agro-dealers.</p>
+    </div>
+    <a class="btn btn-outline-success" href="{% url 'allocation_list' %}">View dealer allocations</a>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-5">
+        <div class="panel-card h-100">
+            <div class="panel-header">
+                <h5>Record inputs issued</h5>
+            </div>
+            <div class="panel-body">
+                <p class="text-muted">Issuing inputs reduces supplier stock. The dealer records the quantity actually collected in their portal.</p>
+                <form method="post" class="stacked-form">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    {% for field in form %}
+                        <div class="mb-3">
+                            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {{ field.errors }}
+                        </div>
+                    {% endfor %}
+                    <button class="btn btn-success w-100" type="submit">Record issue to dealer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-7">
+        <div class="panel-card mb-4">
+            <div class="panel-header">
+                <h5>Current supplier stock</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Supplier</th>
+                            <th>Total</th>
+                            <th>D Compound</th>
+                            <th>Urea</th>
+                            <th>Maize seed</th>
+                            <th>Other seed</th>
+                            <th>Soybean seed</th>
+                            <th>Sunflower seed</th>
+                            <th>Popcorn seed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for supplier in suppliers %}
+                        <tr>
+                            <td>{{ supplier.name }}</td>
+                            <td>{{ supplier.current_stock_kg|floatformat:2 }} kg</td>
+                            <td>{{ supplier.stock_fertilizer_d_kg|floatformat:2 }} kg</td>
+                            <td>{{ supplier.stock_fertilizer_urea_kg|floatformat:2 }} kg</td>
+                            <td>{{ supplier.stock_seed_maize_kg|floatformat:2 }} kg</td>
+                            <td>{{ supplier.stock_seed_other_kg|floatformat:2 }} kg</td>
+                            <td>{{ supplier.stock_seed_soybeans_kg|floatformat:2 }} kg</td>
+                            <td>{{ supplier.stock_seed_sunflower_kg|floatformat:2 }} kg</td>
+                            <td>{{ supplier.stock_seed_popcorn_kg|floatformat:2 }} kg</td>
+                        </tr>
+                        {% empty %}
+                        <tr><td colspan="9" class="text-muted">No active supplier locations found.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
