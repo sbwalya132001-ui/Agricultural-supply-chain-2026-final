@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Report Export{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">Report export</h1>
+        <p class="text-muted mb-0">
+            Download current system records as CSV files.
+            {% if district %}Exports are limited to {{ district }}.{% endif %}
+        </p>
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-6 col-xl-3">
+        <div class="card h-100 border-0 shadow-sm rounded-4">
+            <div class="card-body">
+                <i class="bi bi-person-lines-fill fs-2 text-success"></i>
+                <h2 class="h5 mt-3">Farmers</h2>
+                <p class="small text-muted">Registered farmer profiles and farm details.</p>
+                <a href="{% url 'export_farmers' %}" class="btn btn-success">
+                    <i class="bi bi-download me-1"></i> Export CSV
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+        <div class="card h-100 border-0 shadow-sm rounded-4">
+            <div class="card-body">
+                <i class="bi bi-cloud-sun fs-2 text-success"></i>
+                <h2 class="h5 mt-3">Forecasts</h2>
+                <p class="small text-muted">Demand forecasts and model information.</p>
+                <a href="{% url 'export_forecasts' %}" class="btn btn-success">
+                    <i class="bi bi-download me-1"></i> Export CSV
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+        <div class="card h-100 border-0 shadow-sm rounded-4">
+            <div class="card-body">
+                <i class="bi bi-box-seam fs-2 text-success"></i>
+                <h2 class="h5 mt-3">Allocations</h2>
+                <p class="small text-muted">Inventory allocations and calculated costs.</p>
+                <a href="{% url 'export_allocations' %}" class="btn btn-success">
+                    <i class="bi bi-download me-1"></i> Export CSV
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+        <div class="card h-100 border-0 shadow-sm rounded-4">
+            <div class="card-body">
+                <i class="bi bi-truck fs-2 text-success"></i>
+                <h2 class="h5 mt-3">Routes</h2>
+                <p class="small text-muted">Logistics route plans, status, and vehicles.</p>
+                <a href="{% url 'export_routes' %}" class="btn btn-success">
+                    <i class="bi bi-download me-1"></i> Export CSV
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -29,6 +29,7 @@
                     {% if stakeholder_role == 'Supplier' %}<li class="nav-item"><a class="nav-link" href="{% url 'supplier_dispatch' %}">Supplier stock</a></li>{% endif %}
                     {% if stakeholder_role == 'Agro-Dealer' %}<li class="nav-item"><a class="nav-link" href="{% url 'dealer_portal' %}">My deliveries</a></li>{% endif %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'route_list' %}">Logistics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'report_export' %}">Reports</a></li>
                     {% endif %}
                 </ul>
                 {% if user.is_authenticated %}

@@ -34,9 +34,9 @@ urlpatterns = [
     path('inventory/', include('inventory.urls')),
     path('logistics/', include('logistics.urls')),
     path('weather/', include('weather.urls')),
+    path('reports/', include('reports.urls')),
     # As you build each module, wire it up here, e.g.:
     # path('farmers/', include('farmers.urls')),
     # path('forecasting/', include('forecasting.urls')),
     # path('inventory/', include('inventory.urls')),
-    # path('reports/', include('reports.urls')),
 ]
